@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "quarantine-co-op_db",
+    "database": "quarantine_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "root",
-    "database": "testdb",
+    "database": "quarantine_db",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
