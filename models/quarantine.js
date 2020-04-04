@@ -1,19 +1,27 @@
 module.exports = function(sequelize, DataTypes) {
-  let Books = sequelize.define("Books", {
-    book_title: {
+  let Media = sequelize.define("Media", {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    author: {
+    author_creator: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    book_genre: DataTypes.STRING,
-    checkOut: {
+    genre: {
+      type: DataTypes.STRING,
+    },
+    rating: {
+      type: DataTypes.STRING,
+    },
+    media_type: {
+      type: DataTypes.STRING,
+    },
+    checkedOut: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   });
   return Books;
 };
