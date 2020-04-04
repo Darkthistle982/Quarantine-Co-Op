@@ -15,6 +15,9 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+//Passport
+var passport = require("passport");
+
 //We are not using handlebars so we should not need lines 20-26
 // Handlebars
 // app.engine(
