@@ -4,11 +4,11 @@ const express = require("express");
 // We are not using handlebars so we shouldn't need line 5.
 // var exphbs = require("express-handlebars");
 
-var PORT = process.env.PORT || 8080;
-var app = express();
+const PORT = process.env.PORT || 8080;
+const app = express();
 
 //If we are using sequelize we need line 11.
-var db = require("./models");
+const db = require("./models");
 
 // Middleware
 app.use(express.static("public"));
