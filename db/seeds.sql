@@ -1,4 +1,4 @@
-INSERT INTO media (title, author_creator, genre, rating, media_type, checkedOut)
+INSERT INTO media (title, authorCreator, genre, rating, mediaType, checkedOut)
     VALUES("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", "Fantasty", "Young Adult", "Book", false),
             ("The Hunger Games (The Hunger Games, #1)", "Suzanne Collins", "Science Fiction", "Young Adult", "Book", false),
             ("Fifty Shades of Grey", "E.L. James", "Romance", "Adult", "Book", false),

@@ -2,26 +2,26 @@ module.exports = function(sequelize, DataTypes) {
   let Media = sequelize.define("Media", {
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    author_creator: {
+    authorCreator: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     genre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
-    media_type: {
-      type: DataTypes.STRING,
+    mediaType: {
+      type: DataTypes.STRING
     },
     checkedOut: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
-    },
+      defaultValue: false
+    }
   });
   return Media;
 };
