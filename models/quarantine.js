@@ -23,5 +23,5 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false,
     },
   });
-  return Books;
+  return Media;
 };
