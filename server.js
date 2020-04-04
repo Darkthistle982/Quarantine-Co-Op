@@ -1,25 +1,29 @@
-require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
+// require("dotenv").config();
+const express = require("express");
 
+// We are not using handlebars so we shouldn't need line 5.
+// var exphbs = require("express-handlebars");
+
+var PORT = process.env.PORT || 8080;
+var app = express();
+
+//If we are using sequelize we need line 11.
 var db = require("./models");
 
-var app = express();
-var PORT = process.env.PORT || 3000;
-
 // Middleware
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
 
+//We are not using handlebars so we should not need lines 20-26
 // Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+// app.engine(
+//   "handlebars",
+//   exphbs({
+//     defaultLayout: "main"
+//   })
+// );
+// app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
