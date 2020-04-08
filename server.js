@@ -4,16 +4,23 @@ const express = require("express");
 // We are not using handlebars so we shouldn't need line 5.
 // var exphbs = require("express-handlebars");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const app = express();
+const passportSetup = require("./config/passport-setup");
+const keys = require("./config/keys");
 
 //If we are using sequelize we need line 11.
 const db = require("./models");
+const authRoutes = require("./routes/auth-routes");
 
 // Middleware
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use("/auth", authRoutes);
+
+// set up view engine
+app.set("view engine", "ejs");
 
 //We are not using handlebars so we should not need lines 20-26
 // Handlebars

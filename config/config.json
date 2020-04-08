@@ -1,5 +1,6 @@
 {
   "development": {
+    "port": 3306,
     "username": "root",
     "password": "root",
     "database": "quarantine_db",
@@ -7,6 +8,7 @@
     "dialect": "mysql"
   },
   "test": {
+    "port": 3306,
     "username": "root",
     "password": "root",
     "database": "quarantine_db",
