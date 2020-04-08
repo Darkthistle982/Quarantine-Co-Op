@@ -10,7 +10,7 @@ passport.use(
       clientSecret: process.env.clientSecret,
       callbackURL: "/auth/google/redirect"
     },
-    (accessToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile) => {
       // passport callback function
       console.log("passport callback function fired:");
       console.log(profile);

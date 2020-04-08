@@ -6,7 +6,7 @@ const express = require("express");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const passportSetup = require("./config/passport-setup");
+require("./config/passport-setup");
 require("dotenv").config();
 
 //If we are using sequelize we need line 11.
