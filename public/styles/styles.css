@@ -5,6 +5,11 @@
     background-color: #dddddd;
 }
 
+#logoPic {
+    max-width: 125px;
+    max-height: 125px;
+}
+
 .list-group-item {
     line-height: 2.5;
 }
