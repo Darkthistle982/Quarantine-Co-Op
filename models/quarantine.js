@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     returnByDate: {
-      type: DataTypes.DATETIMESTAMP
+      type: DataTypes.STRING
     }
   });
   return Media;
