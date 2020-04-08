@@ -1,16 +1,16 @@
 {
   "development": {
-    "port": 8889,
+    "port": 3306,
     "username": "root",
-    "password": "",
+    "password": "root",
     "database": "quarantine_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "port": 8889,
+    "port": 3306,
     "username": "root",
-    "password": "",
+    "password": "root",
     "database": "quarantine_db",
     "host": "localhost",
     "dialect": "mysql",
