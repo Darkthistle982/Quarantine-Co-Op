@@ -21,6 +21,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
+    },
+    checkedOutBy: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    returnByDate: {
+      type: DataTypes.DATETIMESTAMP
     }
   });
   return Media;
