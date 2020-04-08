@@ -1,9 +1,6 @@
 // require("dotenv").config();
 const express = require("express");
 
-// We are not using handlebars so we shouldn't need line 5.
-// var exphbs = require("express-handlebars");
-
 const PORT = process.env.PORT || 3000;
 const app = express();
 require("./config/passport-setup");
@@ -21,16 +18,6 @@ app.use("/auth", authRoutes);
 
 // set up view engine
 app.set("view engine", "ejs");
-
-//We are not using handlebars so we should not need lines 20-26
-// Handlebars
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main"
-//   })
-// );
-// app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
