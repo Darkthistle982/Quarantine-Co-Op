@@ -6,8 +6,12 @@
 }
 
 #logoPic {
-    max-width: 125px;
-    max-height: 125px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 .list-group-item {
@@ -31,4 +35,8 @@
 
 #myBtn:hover {
     background-color: lightblue;
+}
+
+footer {
+    text-align: center;
 }
