@@ -1,11 +1,10 @@
 // Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as the regular bcrypt module
 // sometimes causes errors on Windows machines
-
 const bcrypt = require("bcrypt-nodejs");
 
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  let User = sequelize.define("User", {
+  var User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
