@@ -1,117 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="virus-slash icon" href="./images/virus-slash-solid.svg" />
     <title>Quarantine Co-op</title>
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="styles/styles.css"
-      media="screen"
-      title="no title"
-    />
+    <link rel="stylesheet" href="styles/styles.css" media="screen" title="no title" />
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-  </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html"
-              >Home <span class="sr-only">(current)</span></a
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="main.html">Home <span class="sr-only">(current)</span></a
             >
           </li>
           <br />
           <li class="nav-item">
             <a class="nav-link" href="../public/about.html">About</a>
-          </li>
-        </ul>
-        
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                </li>
+            </ul>
+
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">
+              Contribution/ADD Items
+            </button>
+
+            <!-- new Item modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Contribute to the Cause</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="item-name" class="col-form-label">Item:</label>
+                                    <input type="text" class="form-control" id="item-name">
+                                    <label for="media-type" class="col-form-label">Media Type:</label>
+                                    <input type="text" class="form-control" id="media-type">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary">Close</button>
+                            <button type="button" class="btn btn-primary">Save Items</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
             Search
           </button>
-        </form>
-      </div>
+            </form>
+        </div>
     </nav>
 
-    <a href="index.html"
-      ><img id="logoPic" src="../public/images/logo.png" alt="logoImg"
-    /></a>
+    <a href="index.html"><img id="logoPic" src="../public/images/logo.png" alt="logoImg" /></a>
 
     <div class="container border border-dark bg-white">
-      <div class="row">
-        <div id="inStockRow" class="col-sm-6 mt-1" style="font-family: 'Saira Stencil One', cursive;">
-          <h1 class="font-weight-bold">What's in stock</h1>
-          <hr />
-          <ul class="inStockList">
-            <li class="bg-light border border-dark rounded m1-1 mb-1 p-1"></li>
-          </ul>
-        </div>
+        <div class="row">
+            <div id="inStockRow" class="col-sm-6 mt-1" style="font-family: 'Saira Stencil One', cursive;">
+                <h1 class="font-weight-bold">What's in stock</h1>
+                <hr />
+                <ul class="inStockList">
+                    <li class="bg-light border border-dark rounded m1-1 mb-1 p-1"></li>
+                </ul>
+            </div>
 
-        <div id="checkedOutRow" class="col-sm-6 mt-1" style="font-family: 'Saira Stencil One', cursive;">
-          <h1 class="font-weight-bold">Checked Out Items</h1>
-          <hr />
-          <ul class="checkedOutList">
-            <li class="bg-light rounded-pill border border-dark mt-1 mb-1 p-1"></li>
-          </ul>
+            <div id="checkedOutRow" class="col-sm-6 mt-1" style="font-family: 'Saira Stencil One', cursive;">
+                <h1 class="font-weight-bold">Checked Out Items</h1>
+                <hr />
+                <ul class="checkedOutList">
+                    <li class="bg-light rounded-pill border border-dark mt-1 mb-1 p-1"></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
 
-    <footer>Quarantine copyright</footer>
-
-    <button
-      onclick="topFunction()"
-      id="topBtn"
-      class="btn btn-primary m-3"
-      title="Go to top"
-    >
+    <footer>
+        Quarantine This!
+    </footer>
+    <button onclick="topFunction()" id="topBtn" class="btn btn-primary m-3" title="Go to top">
       Top
     </button>
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
 </html>
