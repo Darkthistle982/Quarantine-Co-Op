@@ -23,7 +23,7 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(function() {
-        res.redirect(307, "/");
+        res.send("/");
       })
       .catch(function(err) {
         console.log(err);
