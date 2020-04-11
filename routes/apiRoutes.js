@@ -38,4 +38,6 @@ module.exports = function(app) {
 };
 
 
-app.post("/api/addNew", function(request))
+app.post("/api/addNew", function(request, response) {
+    return response.json();
+});
