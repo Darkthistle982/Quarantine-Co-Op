@@ -8,11 +8,11 @@ const db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function() {
-    db.Media.findAll({}).then(function(result) {
-      result.sendFile(path.join(__dirname, "../public/index.html"));
-    });
-  });
+  // app.get("/api/examples", function() {
+  //   db.Media.findAll({}).then(function(result) {
+  //     result.sendFile(path.join(__dirname, "../public/index.html"));
+  //   });
+  // });
 
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
