@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.post("/api/signup", function(req, res) {
     // console.log(req.body);
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -47,6 +48,7 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        name: req.user.name,
         email: req.user.email,
         id: req.user.id
       });
@@ -54,32 +56,3 @@ module.exports = function(app) {
   });
 };
 
-//Below is the original code written by Swazey
-// const router = require("express").Router();
-// const passport = require("passport");
-
-// //auth login
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
-
-// //auth logout
-// router.get("/logout", (req, res) => {
-//   //handle with passport
-//   res.send("logging out");
-// });
-
-// //auth with google
-// router.get(
-//   "/google",
-//   passport.authenticate("google", {
-//     scope: ["profile"]
-//   })
-// );
-
-// //callback route for google to redirect to
-// router.get("/google/redirect", (req, res) => {
-//   res.send("you reached the callback URI");
-// });
-
-// module.exports = router;
