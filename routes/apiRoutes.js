@@ -38,11 +38,6 @@ module.exports = function(app) {
   });
 };
 
-<<<<<<< HEAD
-
 app.post("/api/addNew", function(request, response) {
     return response.json();
 });
-=======
-// app.post("/api/addNew", function(request))
->>>>>>> 4ac75ce437a45766117b8eaf9cc0c9d8dc7f4e1d
