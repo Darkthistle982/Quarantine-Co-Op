@@ -62,22 +62,17 @@
                                     <input type="text" class="form-control" id="rating">
                                     <label for="media-type" class="col-form-label">Media Type:</label>
 
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              Media Selection
-                                            </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <button class="dropdown-item" type="button">Video Game</button>
-                                            <button class="dropdown-item" type="button">TV Show</button>
-                                            <button class="dropdown-item" type="button">Movie</button>
-                                            <button class="dropdown-item" type="button">Book</button>
+                                    <form>
+                                        <div class = "form-group">
+                                            <select class = "form-control" id = "q1">
+                                                <option value = "" disabled selected>Media Selection</option>
+                                                <option>Video Game</option>
+                                                <option>TV Show</option>
+                                                <option>Movie</option>
+                                                <option>Book</option>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <!-- <input type="text" class="form-control" id="media-type"> -->
-                                    <!-- <div class="form-group">
-                                    <label for="message-text" class="col-form-label">Description:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
-                                </div> -->
+                                    </form>
                             </form>
                             </div>
                             <div class="modal-footer">
