@@ -1,6 +1,6 @@
 $(document).ready(function() {
   function loadAllMedia() {
-    $.get("/api/findAll", media, function(data) {
+    $.get("/api/findAll", function(data) {
       console.log(data);
     });
   }

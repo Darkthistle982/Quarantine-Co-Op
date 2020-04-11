@@ -36,16 +36,16 @@ module.exports = function(app) {
   app.get("/main", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/main.html"));
   });
-};
 
-app.post("/api/addNew", function(request, response) {
-  db.Media.create({
-    title: request.body.title,
-    authorCreator: request.body.authorCreator,
-    genre: request.body.genre,
-    rating: request.body.rating,
-    mediaType: request.body.mediaType
-  }).then(function() {
-    response.status(201).end();
+  app.post("/api/addNew", function(request, response) {
+    db.Media.create({
+      title: request.body.title,
+      authorCreator: request.body.authorCreator,
+      genre: request.body.genre,
+      rating: request.body.rating,
+      mediaType: request.body.mediaType
+    }).then(function() {
+      response.status(201).end();
+    });
   });
-});
+};
