@@ -7,13 +7,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 
 module.exports = function(app) {
-<<<<<<< HEAD
   // Get all examples
-  // app.get("/api/examples", function() {
-  //   db.Media.findAll({}).then(function(result) {
-  //     result.sendFile(path.join(__dirname, "../public/index.html"));
-  //   });
-  // });
+  app.get("/api/findAll", function(request, response) {
+    db.Media.findAll({}).then(function(result) {
+      console.log(result);
+      response.json(result);
+    });
+  });
 
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
@@ -36,38 +36,6 @@ module.exports = function(app) {
   app.get("/main", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/main.html"));
   });
-=======
-    // Get all examples
-    app.get("/api/findAll", function(request, response) {
-        db.Media.findAll({}).then(function(result) {
-            console.log(result);
-            response.json(result);
-        });
-    });
-
-    app.get("/", function(req, res) {
-        // If the user already has an account send them to the members page
-        if (req.user) {
-            res.redirect("/main");
-        }
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
-
-    app.get("/signup", function(req, res) {
-        // If the user already has an account send them to the members page
-        if (req.user) {
-            res.redirect("/main");
-        }
-        res.sendFile(path.join(__dirname, "../public/signup.html"));
-    });
-
-    // Here we'll add our isAuthenticated middleware to this route.
-    // If a user who is not logged in tries to access this route they will be redirected to the signup page
-    app.get("/main", isAuthenticated, function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/main.html"));
-    });
->>>>>>> 779af40b1341a3cac149d5b922db7ba0bb2284fd
 };
-
 
 // app.post("/api/addNew", function(request))
