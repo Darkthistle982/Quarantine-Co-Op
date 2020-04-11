@@ -54,9 +54,6 @@ passport.deserializeUser(function(obj, callback) {
 
 module.exports = passport;
 
-
-
-
 //Below is the original code Swazey wrote
 // const passport = require("passport");
 // const GoogleStrategy = require("passport-google-oauth20");

@@ -23,8 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     },
     checkedOutBy: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     returnByDate: {
       type: DataTypes.STRING
