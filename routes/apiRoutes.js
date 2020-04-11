@@ -8,9 +8,10 @@ const db = require("../models");
 
 module.exports = function(app) {
     // Get all examples
-    app.get("/api/findAll", function() {
+    app.get("/api/findAll", function(request, response) {
         db.Media.findAll({}).then(function(result) {
             console.log(result);
+            response.json(result);
         });
     });
 
@@ -38,4 +39,4 @@ module.exports = function(app) {
 };
 
 
-app.post("/api/addNew", function(request))
+// app.post("/api/addNew", function(request))
