@@ -38,11 +38,14 @@ module.exports = function(app) {
   });
 };
 
-<<<<<<< HEAD
-
 app.post("/api/addNew", function(request, response) {
-    return response.json();
+  db.Media.create({
+    title: request.body.title,
+    authorCreator: request.body.authorCreator,
+    genre: request.body.genre,
+    rating: request.body.rating,
+    mediaType: request.body.mediaType
+  }).then(function() {
+    response.status(201).end();
+  });
 });
-=======
-// app.post("/api/addNew", function(request))
->>>>>>> 4ac75ce437a45766117b8eaf9cc0c9d8dc7f4e1d
