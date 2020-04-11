@@ -38,6 +38,14 @@ module.exports = function(app) {
   });
 };
 
-// app.post("/api/addNew", function(request, response) {
-//     return response.json();
-// });
+app.post("/api/addNew", function(request, response) {
+  db.Media.create({
+    title: request.body.title,
+    authorCreator: request.body.authorCreator,
+    genre: request.body.genre,
+    rating: request.body.rating,
+    mediaType: request.body.mediaType
+  }).then(function() {
+    response.status(201).end();
+  });
+});
