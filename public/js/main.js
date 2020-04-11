@@ -1,7 +1,11 @@
 $(document).ready(function() {
   function loadAllMedia() {
     $.get("/api/findAll", function(data) {
-      console.log(data);
+      $.each(data.Media, function() {
+        if (data.Media.dataValues.checkedOut === false) {
+          createItem();
+        }
+      });
     });
   }
 
@@ -29,4 +33,11 @@ $(document).ready(function() {
     });
   });
   loadAllMedia();
+
+  function createItem() {
+    let $newListItem = $("<ul>");
+    $newListItem.addClass("bg-light border border-dark rounded ml-1 mb-1 p-1");
+    $newListItem.append("<p>" + data.Media.dataValues.title + "</p>");
+    $("#inStockList").append($newListItem);
+  }
 });
