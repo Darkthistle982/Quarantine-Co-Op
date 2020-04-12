@@ -10,8 +10,7 @@ module.exports = function(app) {
   // Get all examples
   app.get("/api/findAll", function(request, response) {
     db.Media.findAll({}).then(function(result) {
-      console.log(result);
-      response.json(result);
+      return response.json(result);
     });
   });
 
