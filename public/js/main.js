@@ -1,7 +1,11 @@
 $(document).ready(function() {
   function loadAllMedia() {
-    $.get("/api/findAll", media, function(data) {
-      console.log(data);
+    $.get("/api/findAll", function(data) {
+      $.each(data.Media, function() {
+        if (data.Media.dataValues.checkedOut === false) {
+          console.log("This worked.");
+        }
+      });
     });
   }
 
@@ -20,13 +24,18 @@ $(document).ready(function() {
       rating: $("#rating")
         .val()
         .trim(),
-      mediaType: $("#dropdownMenu2")
-        .val()
-        .trim()
+      mediaType: $("#mediaType").val()
     };
-    $.post("/api/addNew", newMedia, function(data) {
-      console.log(data);
+    $.post("/api/addNew", newMedia, function() {
+      loadAllMedia();
     });
   });
   loadAllMedia();
+
+  function createItem() {
+    let $newListItem = $("<ul>");
+    $newListItem.addClass("bg-light border border-dark rounded ml-1 mb-1 p-1");
+    $newListItem.append("<p>" + data.Media.dataValues.title + "</p>");
+    $("#inStockList").append($newListItem);
+  }
 });
