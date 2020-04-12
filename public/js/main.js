@@ -48,6 +48,9 @@ $(document).ready(function() {
     $newListItem.append("<p>Genre: " + response.genre + "</p>");
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
+    $newListItem.append(
+      "<button class='btn btn-sm btn-dark'>Check Out</button>"
+    );
     $(".inStockList").append($newListItem);
   }
 
