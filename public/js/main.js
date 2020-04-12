@@ -3,7 +3,7 @@ $(document).ready(function() {
     $.get("/api/findAll", function(data) {
       $.each(data.Media, function() {
         if (data.Media.dataValues.checkedOut === false) {
-          createItem();
+          console.log("This worked.");
         }
       });
     });
@@ -24,12 +24,10 @@ $(document).ready(function() {
       rating: $("#rating")
         .val()
         .trim(),
-      mediaType: $("#dropdownMenu2")
-        .val()
-        .trim()
+      mediaType: $("#mediaType").val()
     };
-    $.post("/api/addNew", newMedia, function(data) {
-      console.log(data);
+    $.post("/api/addNew", newMedia, function() {
+      loadAllMedia();
     });
   });
   loadAllMedia();
