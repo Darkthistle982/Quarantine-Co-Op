@@ -20,7 +20,7 @@ $(document).ready(function() {
       rating: $("#rating")
         .val()
         .trim(),
-      mediaType: $("#dropdownMenu2")
+      mediaType: $("#q1")
         .val()
         .trim()
     };
