@@ -36,6 +36,22 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/main.html"));
   });
 
+  app.put("/api/checkout", function(request, response) {
+    db.Media.update(
+      {
+        checkedOut: 1
+      },
+      {
+        where: {
+          id: request.body.id
+        }
+      }
+    ).then(function(dbCheckedout) {
+      response.json(dbCheckedout);
+      console.log(dbCheckedout);
+    });
+  });
+
   app.post("/api/addNew", function(request, response) {
     db.Media.create({
       title: request.body.title,
