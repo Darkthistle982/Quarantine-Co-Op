@@ -36,14 +36,14 @@ module.exports = function(app) {
     response.sendFile(path.join(__dirname, "../public/main.html"));
   });
 
-  app.put("/api/checkout/", function(request, response) {
+  app.put("/api/checkout/:id", function(request, response) {
     db.Media.update(
       {
         checkedOut: false
       },
       {
         where: {
-          id: request.body.id
+          id: request.params.id
         }
       }
     ).then(function(dbCheckedout) {

@@ -6,12 +6,14 @@ $(document).ready(function() {
   }
 
   $(document).on("click", ".checkOutBtn", function() {
+    let myData = {
+      id: $(".id").val()
+    };
     $.ajax({
+      url: "/api/checkout/" + myData,
       method: "PUT",
-      url: "/api/checkout"
-    }).then(function(data) {
-      loadAllMedia();
-    });
+      data: myData
+    }).then();
   });
 
   $("#addItem").on("click", function() {
@@ -57,7 +59,14 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<button class='btn btn-sm btn-dark checkOutBtn' type='button'>Check Out</button>"
+      "<p value=" +
+        response.id +
+        " class='id'>Item Number: " +
+        response.id +
+        "</p>"
+    );
+    $newListItem.append(
+      "<button class='btn btn-sm btn-dark checkOutBtn' type='button'>Check Out</button></form>"
     );
     $(".inStockList").append($newListItem);
   }
