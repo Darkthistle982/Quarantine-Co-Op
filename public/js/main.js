@@ -1,10 +1,19 @@
 $(document).ready(function() {
   function loadAllMedia() {
     $.get("/api/findAll", function(data) {
-      // console.log(data);
       createItem(data);
     });
   }
+
+  $(".checkOutBtn").on("click", function(checkout) {
+    event.preventDefault();
+    console.log("Button clicked");
+    $.ajax({
+      method: "PUT",
+      url: "/api/checkout",
+      data: checkout
+    }).then(loadAllMedia);
+  });
 
   $("#addItem").on("click", function() {
     event.preventDefault();
@@ -49,7 +58,7 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<button class='btn btn-sm btn-dark'>Check Out</button>"
+      "<button class='btn btn-sm btn-dark checkOutBtn' type='submit'>Check Out</button>"
     );
     $(".inStockList").append($newListItem);
   }
