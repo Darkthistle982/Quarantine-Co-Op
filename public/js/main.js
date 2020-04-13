@@ -5,14 +5,13 @@ $(document).ready(function() {
     });
   }
 
-  $(".checkOutBtn").on("click", function(checkout) {
-    event.preventDefault();
-    console.log("Button clicked");
+  $(document).on("click", ".checkOutBtn", function() {
     $.ajax({
       method: "PUT",
-      url: "/api/checkout",
-      data: checkout
-    }).then(loadAllMedia);
+      url: "/api/checkout"
+    }).then(function(data) {
+      loadAllMedia();
+    });
   });
 
   $("#addItem").on("click", function() {
@@ -58,7 +57,7 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<button class='btn btn-sm btn-dark checkOutBtn' type='submit'>Check Out</button>"
+      "<button class='btn btn-sm btn-dark checkOutBtn' type='button'>Check Out</button>"
     );
     $(".inStockList").append($newListItem);
   }

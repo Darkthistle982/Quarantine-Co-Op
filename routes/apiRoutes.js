@@ -36,10 +36,10 @@ module.exports = function(app) {
     response.sendFile(path.join(__dirname, "../public/main.html"));
   });
 
-  app.put("/api/checkout", function(request, response) {
+  app.put("/api/checkout/", function(request, response) {
     db.Media.update(
       {
-        checkedOut: 1
+        checkedOut: false
       },
       {
         where: {
@@ -48,7 +48,6 @@ module.exports = function(app) {
       }
     ).then(function(dbCheckedout) {
       response.json(dbCheckedout);
-      console.log(dbCheckedout);
     });
   });
 
