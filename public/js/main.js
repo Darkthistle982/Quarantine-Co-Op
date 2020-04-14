@@ -38,7 +38,8 @@ $(document).ready(function() {
       rating: $("#rating")
         .val()
         .trim(),
-      mediaType: $("#mediaType").val()
+      mediaType: $("#mediaType")
+        .val()
     };
     $.post("/api/addNew", newMedia, function() {
       loadAllMedia();
