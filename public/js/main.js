@@ -84,9 +84,6 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<p>Checkout By User: " + response.checkedOutBy + "</p>"
-    );
-    $newListItem.append(
       "<button class='btn btn-sm btn-danger returnItem' id='" +
         response.id +
         "' type='button'>Return Item</button></form>"
