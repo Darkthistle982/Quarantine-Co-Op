@@ -33,7 +33,6 @@ $(document).ready(function() {
       password: password
     })
       .then(function(data) {
-        console.log(data);
         window.location.href = "/";
         // window.location.replace(data);
         // If there's an error, handle it by throwing up a boostrap alert

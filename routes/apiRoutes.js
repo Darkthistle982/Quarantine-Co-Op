@@ -10,8 +10,7 @@ module.exports = function(app) {
   // Get all examples
   app.get("/api/findAll", function(request, response) {
     db.Media.findAll({}).then(function(result) {
-      console.log(result);
-      response.json(result);
+      return response.json(result);
     });
   });
 
@@ -23,18 +22,48 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  app.get("/signup", function(req, res) {
+  app.get("/signup", function(request, response) {
     // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/main");
+    if (request.user) {
+      response.redirect("/main");
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    response.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   // Here we'll add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/main", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/main.html"));
+  app.get("/main", isAuthenticated, function(request, response) {
+    response.sendFile(path.join(__dirname, "../public/main.html"));
+  });
+
+  app.put("/api/checkout/:id", function(request, response) {
+    db.Media.update(
+      {
+        checkedOut: true
+      },
+      {
+        where: {
+          id: request.params.id
+        }
+      }
+    ).then(function(dbCheckedout) {
+      response.json(dbCheckedout);
+    });
+  });
+
+  app.put("/api/return/:id", function(request, response) {
+    db.Media.update(
+      {
+        checkedOut: false
+      },
+      {
+        where: {
+          id: request.params.id
+        }
+      }
+    ).then(function(dbCheckedIn) {
+      response.json(dbCheckedIn);
+    });
   });
 
   app.post("/api/addNew", function(request, response) {
@@ -48,8 +77,4 @@ module.exports = function(app) {
       response.status(201).end();
     });
   });
-<<<<<<< HEAD
-});
-=======
 };
->>>>>>> f457a198356ddf771ab4b59684e64b4d928ce2c2
