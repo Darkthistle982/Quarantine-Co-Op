@@ -1,10 +1,24 @@
 $(document).ready(function() {
   function loadAllMedia() {
     $.get("/api/findAll", function(data) {
-      // console.log(data);
+      $(".inStockList").empty();
+      $(".checkedOutList").empty();
       createItem(data);
     });
   }
+
+  $(document).on("click", ".checkOutBtn", function() {
+    console.log("Button Clicked");
+    console.log(this.id);
+    // let myData = {
+    //   id: this.id
+    // };
+    $.ajax({
+      url: "/api/checkout/" + this.id,
+      method: "PUT",
+      data: this.id
+    }).then(loadAllMedia);
+  });
 
   $("#addItem").on("click", function() {
     event.preventDefault();
@@ -50,7 +64,16 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<button class='btn btn-sm btn-dark'>Check Out</button>"
+      "<p value=" +
+        response.id +
+        " class='id'>Item Number: " +
+        response.id +
+        "</p>"
+    );
+    $newListItem.append(
+      "<button class='btn btn-sm btn-dark checkOutBtn' id='" +
+        response.id +
+        "' type='button'>Check Out</button></form>"
     );
     $(".inStockList").append($newListItem);
   }
@@ -70,6 +93,24 @@ $(document).ready(function() {
     );
     $(".checkedOutList").append($newListItem);
   }
+
+  /*Scroll to top when arrow up clicked BEGIN*/
+  $(window).scroll(function() {
+    var height = $(window).scrollTop();
+    if (height > 100) {
+      $("#back2Top").fadeIn();
+    } else {
+      $("#back2Top").fadeOut();
+    }
+  });
+  $(document).ready(function() {
+    $("#back2Top").click(function(event) {
+      event.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      return false;
+    });
+  });
+  /*Scroll to top when arrow up clicked END*/
 
   loadAllMedia();
 });
