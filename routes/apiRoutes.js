@@ -39,7 +39,7 @@ module.exports = function(app) {
   app.put("/api/checkout/:id", function(request, response) {
     db.Media.update(
       {
-        checkedOut: false
+        checkedOut: true
       },
       {
         where: {
@@ -47,6 +47,7 @@ module.exports = function(app) {
         }
       }
     ).then(function(dbCheckedout) {
+      // console.log(response);
       response.json(dbCheckedout);
     });
   });

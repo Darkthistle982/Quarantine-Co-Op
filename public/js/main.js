@@ -1,19 +1,23 @@
 $(document).ready(function() {
   function loadAllMedia() {
     $.get("/api/findAll", function(data) {
+      $(".inStockList").empty();
+      $(".checkedOutList").empty();
       createItem(data);
     });
   }
 
   $(document).on("click", ".checkOutBtn", function() {
-    let myData = {
-      id: $(".id").val()
-    };
+    console.log("Button Clicked");
+    console.log(this.id);
+    // let myData = {
+    //   id: this.id
+    // };
     $.ajax({
-      url: "/api/checkout/" + myData,
+      url: "/api/checkout/" + this.id,
       method: "PUT",
-      data: myData
-    }).then();
+      data: this.id
+    }).then(loadAllMedia);
   });
 
   $("#addItem").on("click", function() {
@@ -66,7 +70,9 @@ $(document).ready(function() {
         "</p>"
     );
     $newListItem.append(
-      "<button class='btn btn-sm btn-dark checkOutBtn' type='button'>Check Out</button></form>"
+      "<button class='btn btn-sm btn-dark checkOutBtn' id='" +
+        response.id +
+        "' type='button'>Check Out</button></form>"
     );
     $(".inStockList").append($newListItem);
   }
