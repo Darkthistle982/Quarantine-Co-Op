@@ -53,4 +53,4 @@ Currently, the application can create new users, authenticate existing users, an
 * Add a description field that would populate in a mouseover tooltip.
 * Have the items display in a small title only list, and allow the user to click on the itme to expand and show all details. 
 
-### Link to the live deployed application: 
+### Link to the live deployed application: https://obscure-dusk-68355.herokuapp.com/
