@@ -47,8 +47,22 @@ module.exports = function(app) {
         }
       }
     ).then(function(dbCheckedout) {
-      // console.log(response);
       response.json(dbCheckedout);
+    });
+  });
+
+  app.put("/api/return/:id", function(request, response) {
+    db.Media.update(
+      {
+        checkedOut: false
+      },
+      {
+        where: {
+          id: request.params.id
+        }
+      }
+    ).then(function(dbCheckedIn) {
+      response.json(dbCheckedIn);
     });
   });
 

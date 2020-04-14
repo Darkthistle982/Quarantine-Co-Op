@@ -7,12 +7,15 @@ $(document).ready(function() {
     });
   }
 
+  $(document).on("click", ".returnItem", function() {
+    $.ajax({
+      url: "/api/return/" + this.id,
+      method: "PUT",
+      data: this.id
+    }).then(loadAllMedia);
+  });
+
   $(document).on("click", ".checkOutBtn", function() {
-    console.log("Button Clicked");
-    console.log(this.id);
-    // let myData = {
-    //   id: this.id
-    // };
     $.ajax({
       url: "/api/checkout/" + this.id,
       method: "PUT",
@@ -64,13 +67,6 @@ $(document).ready(function() {
     $newListItem.append("<p>Rating: " + response.rating + "</p>");
     $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
     $newListItem.append(
-      "<p value=" +
-        response.id +
-        " class='id'>Item Number: " +
-        response.id +
-        "</p>"
-    );
-    $newListItem.append(
       "<button class='btn btn-sm btn-dark checkOutBtn' id='" +
         response.id +
         "' type='button'>Check Out</button></form>"
@@ -91,6 +87,12 @@ $(document).ready(function() {
     $newListItem.append(
       "<p>Checkout By User: " + response.checkedOutBy + "</p>"
     );
+    $newListItem.append(
+      "<button class='btn btn-sm btn-danger returnItem' id='" +
+        response.id +
+        "' type='button'>Return Item</button></form>"
+    );
+
     $(".checkedOutList").append($newListItem);
   }
 
