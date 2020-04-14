@@ -10,8 +10,7 @@ module.exports = function(app) {
   // Get all examples
   app.get("/api/findAll", function(request, response) {
     db.Media.findAll({}).then(function(result) {
-      console.log(result);
-      response.json(result);
+      return response.json(result);
     });
   });
 
@@ -44,8 +43,8 @@ module.exports = function(app) {
       genre: request.body.genre,
       rating: request.body.rating,
       mediaType: request.body.mediaType
-    }).then(function(dbMedia) {
-      response.json(dbMedia);
+    }).then(function() {
+      response.status(201).end();
     });
   });
 };

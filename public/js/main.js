@@ -1,7 +1,8 @@
 $(document).ready(function() {
   function loadAllMedia() {
-    $.get("/api/findAll", media, function(data) {
-      console.log(data);
+    $.get("/api/findAll", function(data) {
+      // console.log(data);
+      createItem(data);
     });
   }
 
@@ -20,13 +21,55 @@ $(document).ready(function() {
       rating: $("#rating")
         .val()
         .trim(),
-      mediaType: $("#q1")
+      mediaType: $("#mediaType")
         .val()
-        .trim()
     };
-    $.post("/api/addNew", newMedia, function(data) {
-      console.log(data);
+    $.post("/api/addNew", newMedia, function() {
+      loadAllMedia();
     });
   });
+
+  function createItem(data) {
+    $.each(data, function(request, response) {
+      if (response.checkedOut === false) {
+        buildInStockListItem(response);
+      } else {
+        buildOutofStockListItem(response);
+      }
+    });
+  }
+
+  function buildInStockListItem(response) {
+    let $newListItem = $("<li>");
+    $newListItem.addClass("bg-light border border-dark rounded ml-1 mb-1 p-1");
+    $newListItem.append("<p>" + response.title + "</p>");
+    $newListItem.append(
+      "<p>Author/Creator: " + response.authorCreator + "</p>"
+    );
+    $newListItem.append("<p>Genre: " + response.genre + "</p>");
+    $newListItem.append("<p>Rating: " + response.rating + "</p>");
+    $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
+    $newListItem.append(
+      "<button class='btn btn-sm btn-dark'>Check Out</button>"
+    );
+    $(".inStockList").append($newListItem);
+  }
+
+  function buildOutofStockListItem(response) {
+    let $newListItem = $("<li>");
+    $newListItem.addClass("bg-light border border-dark mt-1 mb-1 p-1");
+    $newListItem.append("<p>" + response.title + "</p>");
+    $newListItem.append(
+      "<p>Author/Creator: " + response.authorCreator + "</p>"
+    );
+    $newListItem.append("<p>Genre: " + response.genre + "</p>");
+    $newListItem.append("<p>Rating: " + response.rating + "</p>");
+    $newListItem.append("<p>Media Type: " + response.mediaType + "</p>");
+    $newListItem.append(
+      "<p>Checkout By User: " + response.checkedOutBy + "</p>"
+    );
+    $(".checkedOutList").append($newListItem);
+  }
+
   loadAllMedia();
 });
