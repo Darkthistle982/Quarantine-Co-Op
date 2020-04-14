@@ -1,3 +1,4 @@
+//seeder files used to help seed initial db from sequelize cli
 "use strict";
 module.exports = {
   up: function(queryInterface, Sequelize) {

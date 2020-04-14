@@ -1,3 +1,4 @@
+//model created to set up Media table with sequelize
 module.exports = function(sequelize, DataTypes) {
   let Media = sequelize.define("Media", {
     title: {

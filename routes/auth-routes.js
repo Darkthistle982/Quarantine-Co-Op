@@ -41,21 +41,6 @@ module.exports = function(app) {
     response.redirect("/");
   });
 
-  app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["https://www.googleapis.com/auth/plus.login"]
-    })
-  );
-
-  app.get(
-    "/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/login" }),
-    function(req, res) {
-      res.redirect("/");
-    }
-  );
-
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(request, response) {
     if (!request.user) {

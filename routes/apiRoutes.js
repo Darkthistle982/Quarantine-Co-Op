@@ -35,7 +35,7 @@ module.exports = function(app) {
   app.get("/main", isAuthenticated, function(request, response) {
     response.sendFile(path.join(__dirname, "../public/main.html"));
   });
-
+  //api route for the check out button so users can check out items in stock
   app.put("/api/checkout/:id", function(request, response) {
     db.Media.update(
       {
@@ -50,7 +50,7 @@ module.exports = function(app) {
       response.json(dbCheckedout);
     });
   });
-
+  //api route so users who are finished with items can return items to the stock
   app.put("/api/return/:id", function(request, response) {
     db.Media.update(
       {
@@ -65,7 +65,7 @@ module.exports = function(app) {
       response.json(dbCheckedIn);
     });
   });
-
+  //post route to create new items to add to the database for borrowing
   app.post("/api/addNew", function(request, response) {
     db.Media.create({
       title: request.body.title,

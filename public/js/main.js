@@ -1,4 +1,6 @@
+//doc ready function to make sure js loads correctly
 $(document).ready(function() {
+  //main function to clear/load all content
   function loadAllMedia() {
     $.get("/api/findAll", function(data) {
       $(".inStockList").empty();
@@ -6,7 +8,7 @@ $(document).ready(function() {
       createItem(data);
     });
   }
-
+  //onclick function ajax call to register return item route
   $(document).on("click", ".returnItem", function() {
     $.ajax({
       url: "/api/return/" + this.id,
@@ -14,7 +16,7 @@ $(document).ready(function() {
       data: this.id
     }).then(loadAllMedia);
   });
-
+  //onclick function ajax call to register check out button route
   $(document).on("click", ".checkOutBtn", function() {
     $.ajax({
       url: "/api/checkout/" + this.id,
@@ -22,7 +24,7 @@ $(document).ready(function() {
       data: this.id
     }).then(loadAllMedia);
   });
-
+  //post on click button to run the logic for the add item button to add item route
   $("#addItem").on("click", function() {
     event.preventDefault();
     let newMedia = {
@@ -44,7 +46,7 @@ $(document).ready(function() {
       loadAllMedia();
     });
   });
-
+  //function to check if item is in stock or not and sort the items into their columns
   function createItem(data) {
     $.each(data, function(request, response) {
       if (response.checkedOut === false) {
@@ -54,7 +56,7 @@ $(document).ready(function() {
       }
     });
   }
-
+  //function that dynamically builds the in stock block items and inserts them into the dom
   function buildInStockListItem(response) {
     let $newListItem = $("<li>");
     $newListItem.addClass("bg-light border border-dark rounded ml-1 mb-1 p-1");
@@ -72,7 +74,7 @@ $(document).ready(function() {
     );
     $(".inStockList").append($newListItem);
   }
-
+  //function to dynamically build the checked out item blocks and insert them into the DOM
   function buildOutofStockListItem(response) {
     let $newListItem = $("<li>");
     $newListItem.addClass("bg-light border border-dark mt-1 mb-1 p-1");
@@ -109,6 +111,6 @@ $(document).ready(function() {
     });
   });
   /*Scroll to top when arrow up clicked END*/
-
+  //initial call to load the main page upon arriving
   loadAllMedia();
 });

@@ -1,27 +1,11 @@
 //we import passport packages required for authentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-// Only creating a local strategy now, below would include google if we want to.
-var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 require("dotenv").config();
 
 // We will need the models folder to check passport against
 const db = require("../models");
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.clientID,
-      clientSecret: process.env.clientSecret,
-      callbackURL: "http://www.example.com/auth/google/callback"
-    },
-    function(accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ googleId: profile.id }, function(err, user) {
-        return done(err, user);
-      });
-    }
-  )
-);
 // Telling passport we want to use a Local STrategy. In other words, we want to login with a username/email and password
 passport.use(
   new LocalStrategy(
