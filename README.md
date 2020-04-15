@@ -47,6 +47,7 @@ Currently, the application can create new users, authenticate existing users, an
     * include a credit card auth so if users do not return items, they are charged for them.
 * Have and store shipping info so users can arrange to send items to one another or for local pick up drop off.
 * Have the user name who checked out an item display in the checkout out column.
+* Be able to set up regional filtering for larger distribution of items and to allow users to do things locally or ship to others outside their local areas. 
 * Add in a Filter button to allow users to sort out and search for items by Media Type.
 * Add in a Search functionality for users to look for items specifically.
 * Add in a link to reviews for each product on external sites using an API call.
